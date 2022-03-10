@@ -50,12 +50,13 @@ class textPrintWork : public Worker
 {
 	Q_OBJECT
 public:
-	textPrintWork(ProcessNumWindow* parent);
+	textPrintWork();
+	~textPrintWork() { closesocket(SocketManager::hServSock); };
 public slots:
 	void doWork() override;
 signals:
 	void print();
 private:
-	ProcessNumWindow* m_processNumWindow;
+	//ProcessNumWindow* m_processNumWindow;
 	//QTimer m_timer;
 };

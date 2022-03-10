@@ -224,3 +224,7 @@ void SocketManager::useOtherThread()
 	}
 	}
 }
+
+SocketManager::~SocketManager()
+{
+}

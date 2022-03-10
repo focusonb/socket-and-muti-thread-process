@@ -53,9 +53,8 @@ void ProcessWorker::doWork()
 }
 
 
-textPrintWork::textPrintWork(ProcessNumWindow*  parent):m_processNumWindow(parent)
+textPrintWork::textPrintWork()
 {
-	
 }
 
 void textPrintWork::doWork()

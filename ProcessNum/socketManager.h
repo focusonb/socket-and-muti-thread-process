@@ -13,6 +13,7 @@ class SocketManager :public QObject
 public:
 	SocketManager(WorkerType type = WorkerType::Processor, WorkerType type2 = WorkerType::Sender
 	);
+	~SocketManager();
 	static void updateData();
 	static void updateCountIn();
 	static void updateCountOut();

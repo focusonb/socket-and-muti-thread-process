@@ -1,13 +1,12 @@
 #include "ThreadControler.h"
 #include "worker.h"
 
-ThreadControler::ThreadControler(WorkerType type, SocketManager* parent,
-	ProcessNumWindow* processNumWindow):m_factory(type, processNumWindow, parent)
+ThreadControler::ThreadControler(WorkerType type, SocketManager* parent):m_factory(type, parent)
 {
-	m_worker = m_factory.creat();
-	m_worker->moveToThread(&m_thread);
-	connect(&m_thread, &QThread::finished, m_worker, &QObject::deleteLater);
-	connect(this, &ThreadControler::operate, m_worker, &Worker::doWork);
+	Worker* worker = m_factory.creat();
+	worker->moveToThread(&m_thread);
+	connect(&m_thread, &QThread::finished, worker, &QObject::deleteLater);
+	connect(this, &ThreadControler::operate, worker, &Worker::doWork);
 	m_thread.start();
 }
 ThreadControler::~ThreadControler() {
@@ -20,5 +19,5 @@ void ThreadControler::work()
 }
 Worker* ThreadControler::getWorker()
 {
-	return m_worker;
+	return m_factory.creat();
 }

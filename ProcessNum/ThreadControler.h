@@ -9,8 +9,8 @@ class ThreadControler :
 {
 	Q_OBJECT
 public:
-	ThreadControler(WorkerType type, SocketManager* parent = nullptr,
-		ProcessNumWindow* processNumWindow = nullptr);
+	ThreadControler(WorkerType type, SocketManager* parent = nullptr
+		);
 
 	void work();
 	Worker* getWorker();
@@ -21,6 +21,5 @@ signals:
 private:
 	QThread m_thread;
 	WorkerFactory m_factory;
-	Worker* m_worker;
 };
 

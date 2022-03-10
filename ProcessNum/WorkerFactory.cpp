@@ -1,24 +1,26 @@
 #include "WorkerFactory.h"
 #include "worker.h"
 
-WorkerFactory::WorkerFactory(WorkerType type, ProcessNumWindow* processNumWindow
-	,SocketManager* socketManager):type(type), m_processNumWindow(processNumWindow)
-	, m_socketManager(socketManager)
-{
-}
-
-Worker * WorkerFactory::creat()
+WorkerFactory::WorkerFactory(WorkerType type
+	,SocketManager* socketManager):type(type)
 {
 	switch (type)
 	{
 	case WorkerType::Sender:
-		return new SendWorker(m_socketManager);
+		m_worker = new SendWorker(socketManager);
+		break;
 	case WorkerType::TextBrowser:
-		return new textPrintWork(m_processNumWindow);
+		m_worker = new textPrintWork;
+		break;
 	case WorkerType::Processor:
-		return new ProcessWorker;
+		m_worker = new ProcessWorker;
+		break;
 	case WorkerType::Start:
-		return new StartWorker;
+		m_worker = new StartWorker;
 	}
-	return nullptr;
+}
+
+Worker * WorkerFactory::creat()
+{
+	return m_worker;
 }

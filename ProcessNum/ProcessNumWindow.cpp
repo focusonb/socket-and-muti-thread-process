@@ -13,7 +13,7 @@ ProcessNumWindow::ProcessNumWindow(WorkerType type,  QWidget *parent2)
 	//m_textBrowserControler(WorkerType::TextBrowser, nullptr, this)
 {
     ui.setupUi(this);
-	m_textBrowserControler = new ThreadControler(WorkerType::TextBrowser, nullptr, this);
+	m_textBrowserControler = new ThreadControler(WorkerType::TextBrowser, nullptr);
 	Worker* worker = m_textBrowserControler->getWorker();
 	textPrintWork* pWork = static_cast<textPrintWork*>(worker);
 	connect(pWork, &textPrintWork::print,this,
