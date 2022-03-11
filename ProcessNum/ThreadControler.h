@@ -9,8 +9,8 @@ class ThreadControler :
 {
 	Q_OBJECT
 public:
-	ThreadControler(WorkerType type, SocketManager* parent = nullptr
-		);
+	ThreadControler(WorkerTypeSpec* spec);
+	//ThreadControler& operator= (ThreadControler&) = default ;
 
 	void work();
 	Worker* getWorker();

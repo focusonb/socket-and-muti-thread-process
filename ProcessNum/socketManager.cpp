@@ -7,6 +7,8 @@
 #include <Windows.h>
 #include <mutex>
 
+#include <stdlib.h>
+
 
 
 
@@ -24,9 +26,11 @@ std::mutex SocketManager::mtx1;
 std::mutex SocketManager::mtx2;
 
 
-SocketManager::SocketManager(WorkerType type, WorkerType type2):
-	m_processthreadControler1(type), m_processthreadControler2(type), m_sendthreadControler(type2)
+SocketManager::SocketManager(WorkerTypeSpec* type, WorkerTypeSpec* type2):
+	m_processthreadControler1(type2), m_processthreadControler2(type2), m_sendthreadControler(type)
 {
+		//ThreadControler controler(new SendWorkerSpec(this));
+		//m_sendthreadControler = controler;
 }
 
 void SocketManager::initialize()
@@ -142,7 +146,10 @@ void SocketManager::makeEvent(SOCKET&sock, WSAEVENT&event, int fd)
 void SocketManager::updateData()
 {
 	std::lock_guard<std::mutex> lck(mtx);
-	data++;
+	//data++;
+	int i = rand() % 10+1;
+	cout << i << endl;
+	data = i + data;
 }
 
 void SocketManager::updateCountIn()

@@ -90,6 +90,7 @@
     <ClCompile Include="ThreadControler.cpp" />
     <ClCompile Include="worker.cpp" />
     <ClCompile Include="WorkerFactory.cpp" />
+    <ClCompile Include="WorkerTypeSpec.cpp" />
     <QtRcc Include="ProcessNum.qrc" />
     <QtUic Include="ProcessNum.ui" />
     <QtMoc Include="ProcessNumWindow.h" />
@@ -104,6 +105,7 @@
   <ItemGroup>
     <ClInclude Include="MyStrProcessor.h" />
     <ClInclude Include="WorkerFactory.h" />
+    <ClInclude Include="WorkerTypeSpec.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

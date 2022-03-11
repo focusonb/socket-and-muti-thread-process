@@ -8,17 +8,17 @@
 
 
 
-ProcessNumWindow::ProcessNumWindow(WorkerType type,  QWidget *parent2)
-    : m_Controler(type)
+ProcessNumWindow::ProcessNumWindow(WorkerTypeSpec* startType, WorkerTypeSpec* textType , 
+	QWidget *parent2)
+    : m_Controler(startType), m_textBrowserControler(textType)
 	//m_textBrowserControler(WorkerType::TextBrowser, nullptr, this)
 {
     ui.setupUi(this);
-	m_textBrowserControler = new ThreadControler(WorkerType::TextBrowser, nullptr);
-	Worker* worker = m_textBrowserControler->getWorker();
+	Worker* worker = m_textBrowserControler.getWorker();
 	textPrintWork* pWork = static_cast<textPrintWork*>(worker);
 	connect(pWork, &textPrintWork::print,this,
 		&ProcessNumWindow::setTextBrowserText);
-	m_textBrowserControler->work();
+	m_textBrowserControler.work();
 }
 
 ProcessNumWindow::~ProcessNumWindow()

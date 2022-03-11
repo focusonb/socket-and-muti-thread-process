@@ -12,7 +12,9 @@ class ProcessNumWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    ProcessNumWindow(WorkerType type = WorkerType::Start, QWidget *parent2 = Q_NULLPTR);
+    ProcessNumWindow(WorkerTypeSpec* startType , 
+		WorkerTypeSpec* textType,
+		QWidget *parent2 = Q_NULLPTR);
 	~ProcessNumWindow();
 	
 public slots:
@@ -24,5 +26,5 @@ private:
     Ui::ProcessNumClass ui;
 	//SocketManager socketManager;
 	ThreadControler m_Controler;
-	ThreadControler* m_textBrowserControler;
+	ThreadControler m_textBrowserControler;
 };

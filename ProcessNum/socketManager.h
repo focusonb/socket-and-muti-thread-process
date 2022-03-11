@@ -5,14 +5,14 @@
 
 #include "ThreadControler.h"
 #include "MyStrProcessor.h"
+#include "WorkerTypeSpec.h"
 
 using std::string;
 class SocketManager :public QObject
 {
 	Q_OBJECT
 public:
-	SocketManager(WorkerType type = WorkerType::Processor, WorkerType type2 = WorkerType::Sender
-	);
+	SocketManager(WorkerTypeSpec* type = new SendWorkerSpec, WorkerTypeSpec* type2 = new ProcessWorkerSpec);
 	~SocketManager();
 	static void updateData();
 	static void updateCountIn();
@@ -45,6 +45,7 @@ private:
 	SOCKET loopsock;
 	WSAEVENT newEvent;
 	WSANETWORKEVENTS netevent;
+
 	ThreadControler m_sendthreadControler;
 	ThreadControler m_processthreadControler1;
 	ThreadControler m_processthreadControler2;

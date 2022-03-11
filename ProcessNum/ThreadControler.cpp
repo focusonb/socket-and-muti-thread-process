@@ -1,7 +1,7 @@
 #include "ThreadControler.h"
 #include "worker.h"
 
-ThreadControler::ThreadControler(WorkerType type, SocketManager* parent):m_factory(type, parent)
+ThreadControler::ThreadControler(WorkerTypeSpec* spec):m_factory(spec)
 {
 	Worker* worker = m_factory.creat();
 	worker->moveToThread(&m_thread);

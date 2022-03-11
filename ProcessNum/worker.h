@@ -15,6 +15,8 @@ public slots:
 class StartWorker : public Worker
 {
 	Q_OBJECT
+public:
+	StartWorker(){};
 public slots:
 	void doWork() override;
 private:
@@ -25,7 +27,7 @@ class SendWorker : public Worker
 {
 	Q_OBJECT
 public:
-		SendWorker(SocketManager* socketManager);
+		SendWorker(SocketManager* socketManager = nullptr);
 public slots:
 	void doWork() override;
 private:
